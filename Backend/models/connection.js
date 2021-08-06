@@ -1,22 +1,20 @@
 const mongoose = require('mongoose')
 
-
-const userSchema = new mongoose.Schema({
-    name:{
-        type:String,
-        required:true,
-        trim: true
+//which customer and consumers are connected
+const connectionSchema = new mongoose.Schema({
+    merchantId:{
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
     },
-    phone:{
+    customerId:{
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+    }, 
+    amountPending:{
         type: Number,
-        unique: true,
-        required: true,
-        trim: true
-    },
-    email:{
-        type: String,
-        unique: true,
-        required: true,
-        trim: true
+        default: 0,
     }
 })
+
+const Connection = mongoose.model("Connection", connectionSchema)
+module.exports = Connection
