@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-mongoose.connect("mongodb+srv://anuj_zeta:9621337879@cluster0.lv9gp.mongodb.net/localPeVocal?retryWrites=true&w=majority",{
+mongoose.connect(process.env.MONGODB_URI,{
     useNewUrlParser:true,
     useCreateIndex: true,
     useUnifiedTopology: true,

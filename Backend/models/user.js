@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 
 const userSchema = new mongoose.Schema({
     name:{
+        //shp name or customer name
         type:String,
         required:true,
         trim: true
@@ -19,15 +20,25 @@ const userSchema = new mongoose.Schema({
         //required: true,
         trim: true
     },
+    password:{
+        type: String,
+        required:true
+    },
     userType:{
         //two types -1: Customer 2: Merchant
         type: String,
         required: true
     },
-    shopName:{
+    ownerName:{
         //Only if userType is Merchant
         type: String
-    }
+    },
+    tokens:[{
+        token:{
+            type:String,
+            required:true
+        }
+    }]
 })
 
 User = mongoose.model('User',userSchema)
