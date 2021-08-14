@@ -4,10 +4,12 @@ const mongoose = require('mongoose')
 const connectionSchema = new mongoose.Schema({
     merchantId:{
         type: mongoose.Schema.Types.ObjectId,
+        ref:'User',
         required: true,
     },
     customerId:{
         type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
         required: true,
     }, 
     amountPending:{

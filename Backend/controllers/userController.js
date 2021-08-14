@@ -8,7 +8,12 @@ module.exports.test = async function(req,res){
 
 module.exports.signup = async function(req,res){
     const user = new User(req.body)
+    const {phone} = req.body
     try{
+        const finduser = await User.findOne({phone})
+        if(finduser){
+            return res.status(406).send({error:"User already exist"})
+        }
 
         user.password = await utils.encryptPassword(user.password)
 
@@ -28,15 +33,16 @@ module.exports.login = async(req,res)=>{
         const {phone, password} = req.body
 
         if(!phone || !password)
-            res.status(400).send({error:"All inputs are required"})
+            return res.status(406).send({error:"All inputs are required"})
 
         const user = await User.findOne({phone})
         if(!user){
-            res.status(400).send({error:"User doesn't exist"})
+            return res.status(404).send({error:"User doesn't exist"})
         }
-        const isValid = utils.checkPassowrd(user.password,password)
+        const isValid = await utils.checkPassoword(user.password,password)
+        console.log(isValid)
         if(!isValid){
-            res.status(400).send({error:"Incorrect phone or password"})
+            return res.status(401).send({error:"Incorrect username or password"})
         }
         const token = await utils.getAuthToken(user)
         console.log(token)

@@ -19,7 +19,8 @@ module.exports.encryptPassword = async(password)=>{
     return hashedPassword
 }
 
-module.exports.checkPassowrd = async(hash, password)=>{
-    const isValidPassword = await bcrypt.compare(password, hash)
+module.exports.checkPassoword = async(hash, password)=>{
+    const isValidPassword =  await bcrypt.compare(password, hash)
+    //console.log("the"+isValidPassword)
     return isValidPassword
 }
