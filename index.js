@@ -11,7 +11,7 @@ app.use(express.json())
 app.use(userRouter)
 app.use(connectionRouter)
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 app.listen(port,()=>{
     console.log('The app is running at port '+port)
 })
