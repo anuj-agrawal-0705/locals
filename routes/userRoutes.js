@@ -8,5 +8,6 @@ userRouter.post('/test', controlls.test)
 userRouter.post('/register', controlls.signup)
 userRouter.post('/login', controlls.login)
 userRouter.post('/search',auth, controlls.searchUser)
+userRouter.get('/profile',auth, controlls.profile)
 
 module.exports = userRouter

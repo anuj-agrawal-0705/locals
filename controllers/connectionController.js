@@ -46,6 +46,6 @@ module.exports.myConnections = async(req,res)=>{
         });
     }catch(error){
         console.error(error)
-        res.status(400).send(error);
+        res.status(400).send({error:error.message});
     }
 }

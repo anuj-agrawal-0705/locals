@@ -80,6 +80,17 @@ module.exports.searchUser = async(req,res)=>{
     }
 }
 
+module.exports.profile = async(req,res)=>{
+    try{
+        res.send({
+            user:req.user
+        })
+    }catch(error){
+        console.error(error.message)
+        res.status(400).send({error:error.message})
+    }
+}
+
 
 
 
