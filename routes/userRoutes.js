@@ -4,7 +4,7 @@ const controlls = require('../controllers/userController')
 const auth = require('../middleware/auth')
 
 userRouter.get('/',(req,res)=>{
-    res.send({"Message":"Welcome to our locals app"})
+    res.send({"Message":"Welcome to our locals app, now we are Continously Integrated"})
 })
 userRouter.post('/test', controlls.test)
 userRouter.post('/register', controlls.signup)
